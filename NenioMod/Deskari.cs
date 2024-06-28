@@ -119,17 +119,20 @@ namespace NenioMod
         internal class BondController : BaseUnitController
         {
             public override void TickOnUnit(UnitEntityData unit)
-            {
-                
+            {               
                 try
                 {
-                    if (!unit.IsInCombat || !unit.View.IsMoving() || !unit.HasFact(Bond)) return;
+                    if (!unit.IsInCombat || !unit.HasFact(Bond)) return;
                     foreach (var unit2 in GameHelper.GetTargetsAround(unit.Position, 100.Feet(), false, false))
                     {
                         if (unit2.HasFact(Bond))
                         {
+                            if (CombatController.IsInTurnBasedCombat() && Game.Instance.TurnBasedCombatController?.CurrentTurn?.Rider == unit2)
+                            {
+                                return;
+                            }
                             unit2.Position = unit.Position;
-                            break;
+                            return;
                         }
                     }
                 }
