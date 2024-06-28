@@ -1,0 +1,12 @@
+﻿{
+  "Id": "NenioMod",
+  "DisplayName": "Baphomet Rides Deskari",
+  "Author": "Nenio",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.27.11",
+  "Requirements": [],
+  "AssemblyName": "NenioMod.dll",
+  "EntryMethod": "NenioMod.Main.Load",
+  "HomePage": "",
+  "Repository": ""
+}
