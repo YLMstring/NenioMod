@@ -127,11 +127,14 @@ namespace NenioMod
                     {
                         if (unit2.HasFact(Bond))
                         {
-                            if (CombatController.IsInTurnBasedCombat() && Game.Instance.TurnBasedCombatController?.CurrentTurn?.Rider == unit2)
+                            if (UnityEngine.Random.Range(0, 2) >= 1)
                             {
-                                return;
+                                unit.Position = unit2.Position;
                             }
-                            unit2.Position = unit.Position;
+                            else
+                            {
+                                unit2.Position = unit.Position;
+                            }
                             return;
                         }
                     }
