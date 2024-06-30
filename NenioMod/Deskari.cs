@@ -25,7 +25,6 @@ using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic;
 using TurnBased.Controllers;
-using Unity.Burst.CompilerServices;
 using HarmonyLib;
 using Kingmaker.GameModes;
 using Kingmaker.Visual;

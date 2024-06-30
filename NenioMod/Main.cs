@@ -54,7 +54,7 @@ public static class Main {
                     Logger.Info("Nenio Mod started already");
                     return;
                 }
-                Logger.Info("Nenio Mod started");
+                Logger.Info("Nenio Mod started.");
                 Initialized = true;
                 Deskari.DeskariConfigure();
             }
