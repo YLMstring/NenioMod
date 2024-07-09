@@ -10,6 +10,8 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.Localization.Shared;
 using BlueprintCore.Utils;
 using Kingmaker.DialogSystem.Blueprints;
+using Kingmaker.TextTools;
+using Kingmaker.Utility;
 
 namespace NenioMod
 {
@@ -32,7 +34,12 @@ namespace NenioMod
 
         public static string GetEnglish(LocalizedString local)
         {
-            return local.LoadString(pack, Locale.enGB);
+            string text = local.LoadString(pack, Locale.enGB);
+            if (local.ShouldProcess)
+            {
+                return TextTemplateEngine.Process(text);
+            }
+            return text;
         }
 
         private static LocalizationPack pack = LocalizationManager.LoadPack(Locale.enGB);
