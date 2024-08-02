@@ -72,9 +72,8 @@ namespace NenioMod
             {
                 if (__result.Length < 50) { return; }
                 string actualKey = __instance.GetActualKey();
-                string text1 = pack1.GetText(actualKey, true);
-                string text2 = pack2.GetText(actualKey, true);
-                if (text1.Contains("unknown key") || text2.Contains("unknown key"))
+                LocalizationPack.StringEntry stringEntry;
+                if (!pack1.m_Strings.TryGetValue(actualKey, out stringEntry) || !pack2.m_Strings.TryGetValue(actualKey, out stringEntry))
                 {
                     __result += " (mod)";
                 }
