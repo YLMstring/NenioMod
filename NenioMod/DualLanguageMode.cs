@@ -70,7 +70,7 @@ namespace NenioMod
         {
             try
             {
-                if (__result.Length < 50) { return; }
+                if (!__result.Contains(".") && !__result.Contains("。")) { return; }
                 string actualKey = __instance.GetActualKey();
                 LocalizationPack.StringEntry stringEntry;
                 if (!pack1.m_Strings.TryGetValue(actualKey, out stringEntry) || !pack2.m_Strings.TryGetValue(actualKey, out stringEntry))
