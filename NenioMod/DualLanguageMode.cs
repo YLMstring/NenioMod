@@ -62,4 +62,27 @@ namespace NenioMod
             catch { }
         }
     }
+
+    [HarmonyPatch(typeof(LocalizedString), nameof(LocalizedString.LoadString))]
+    internal class DualLanguageMode3
+    {
+        static void Postfix(ref string __result, ref LocalizedString __instance)
+        {
+            try
+            {
+                if (__result.Length < 50) { return; }
+                string actualKey = __instance.GetActualKey();
+                string text1 = pack1.GetText(actualKey, true);
+                string text2 = pack2.GetText(actualKey, true);
+                if (text1.Contains("unknown key") || text2.Contains("unknown key"))
+                {
+                    __result += " (mod)";
+                }
+            }
+            catch { }
+        }
+
+        private static LocalizationPack pack1 = LocalizationManager.LoadPack(Locale.enGB);
+        private static LocalizationPack pack2 = LocalizationManager.LoadPack(Locale.zhCN);
+    }
 }
