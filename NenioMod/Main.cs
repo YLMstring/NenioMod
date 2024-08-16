@@ -57,6 +57,7 @@ public static class Main {
                 Logger.Info("Nenio Mod started.");
                 Initialized = true;
                 Deskari.DeskariConfigure();
+                PuzzleSkip.StyleConfigure();
             }
             catch (Exception e) { Logger.Error("Nenio Mod failed", e); }
                 
