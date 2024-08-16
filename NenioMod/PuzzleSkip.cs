@@ -44,6 +44,7 @@ namespace NenioMod
                 .SetDisplayName(StyleDisplayName)
                 .SetDescription(StyleDescription)
                 .SetIcon(icon)
+                .SetCanTargetSelf(true)
                 .SetRange(AbilityRange.Personal)
                 .SetType(AbilityType.Special)
                 .SetActionType(Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Free)
@@ -71,9 +72,17 @@ namespace NenioMod
             List<BlueprintEtude> list = new List<BlueprintEtude>();
             foreach (KeyValuePair<BlueprintEtude, EtudesSystem.EtudeState> kvp in Game.Instance.Player.EtudesSystem.m_EtudesData)
             {
-                if (kvp.Value != EtudesSystem.EtudeState.Started) return;
-                if (kvp.Key?.NameSafe().Contains("Puzzle") != true) return;
-                UIUtility.SendWarning(kvp.Key.NameSafe() + "detected.");
+                //UIUtility.SendWarning(kvp.Key.NameSafe() + " checked.");
+                if (kvp.Key?.NameSafe().Contains("Puzzle") != true)
+                {
+                    continue;
+                }
+                if (kvp.Value != EtudesSystem.EtudeState.Started)
+                {
+                    //UIUtility.SendWarning(kvp.Key.NameSafe() + " not started.");
+                    continue;
+                }
+                UIUtility.SendWarning(kvp.Key.NameSafe() + " detected.");
                 list.Add(kvp.Key);
             }
             foreach (var etude in list)
