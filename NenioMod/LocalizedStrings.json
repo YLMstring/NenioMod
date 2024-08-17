@@ -11,6 +11,18 @@
     "enGB": "Right. Hmmmm. It seems to be working. Now. I need to come up with an idea right now. I usually have a ton of ideas! Let's see now... Deskari. And Baphomet. Their anti-crusader alliance is not effective enough. They need to unite their forces on the physical level! Baphomet needs to mount Deskari and ride him into battle, two-in-one!",
     "ruRU": "Right. Hmmmm. It seems to be working. Now. I need to come up with an idea right now. I usually have a ton of ideas! Let's see now... Deskari. And Baphomet. Their anti-crusader alliance is not effective enough. They need to unite their forces on the physical level! Baphomet needs to mount Deskari and ride him into battle, two-in-one!",
     "zhCN": "好。嗯……看来它开始起效了。现在，我得马上想个点子出来，我平常都有一大堆点子的！我想想……德斯卡瑞，加上巴弗灭，他们的反圣教军同盟还不够好。他们得在物理层面上结合双方的力量才行！巴弗灭应该骑着德斯卡瑞上战场，合二为一！"
+  },
+  {
+    "Key": "PuzzleSkip.Name",
+    "ProcessTemplates": false,
+    "enGB": "Nenio's Experiment",
+    "zhCN": "聂纽的实验",
+    "ruRU": "Nenio's Experiment"
+  },
+  {
+    "Key": "PuzzleSkip.Description",
+    "enGB": "Riddler Get Out of Golarion!",
+    "ruRU": "Riddler Get Out of Golarion!",
+    "zhCN": "谜语人滚出格拉利昂！"
   }
-
 ]

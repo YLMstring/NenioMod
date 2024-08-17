@@ -45,6 +45,7 @@ namespace NenioMod
                 .SetDescription(StyleDescription)
                 .SetIcon(icon)
                 .SetCanTargetSelf(true)
+                .SetSpellResistance(false)
                 .SetRange(AbilityRange.Personal)
                 .SetType(AbilityType.Special)
                 .SetActionType(Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Free)
