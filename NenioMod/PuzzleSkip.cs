@@ -19,6 +19,10 @@ using Kingmaker.Blueprints;
 using Kingmaker.Designers.EventConditionActionSystem.Events;
 using Kingmaker.ElementsSystem;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using BlueprintCore.Actions.Builder.AVEx;
+using BlueprintCore.Utils;
+using Kingmaker.EntitySystem.Entities;
+using Kingmaker.View.MapObjects;
 
 namespace NenioMod
 {
@@ -96,6 +100,28 @@ namespace NenioMod
                     FindEtude(comp.Actions);
                 }
             }
+            foreach (MapObjectEntityData mapObjectEntityData in Game.Instance.State.MapObjects)
+            {
+                if (!mapObjectEntityData.IsInFogOfWar)
+                {
+                    float num = Game.Instance.Player.GetMainPartyUnit().DistanceTo(mapObjectEntityData.View.Transform.position);
+                    if (num > 30.Feet().Meters)
+                    {
+                        continue;
+                    }
+                    else 
+                    {
+                        InteractionDoorPart interactionDoorPart = mapObjectEntityData.Get<InteractionDoorPart>();
+                        if (interactionDoorPart == null || interactionDoorPart.IsOpen)
+                        {
+                            continue;
+                        }
+                        UIUtility.SendWarning(mapObjectEntityData.ToString() + " opened.");
+                        interactionDoorPart.Open();
+                    }
+                }
+            }
+
         }
         private void FindEtude(ActionList actions)
         {
