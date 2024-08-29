@@ -100,12 +100,14 @@ namespace NenioMod
                     FindEtude(comp.Actions);
                 }
             }
+            InteractionDoorPart door = null;
+            float dis = 30.Feet().Meters;
             foreach (MapObjectEntityData mapObjectEntityData in Game.Instance.State.MapObjects)
             {
                 if (!mapObjectEntityData.IsInFogOfWar)
                 {
                     float num = Game.Instance.Player.GetMainPartyUnit().DistanceTo(mapObjectEntityData.View.Transform.position);
-                    if (num > 30.Feet().Meters)
+                    if (num > dis)
                     {
                         continue;
                     }
@@ -116,12 +118,16 @@ namespace NenioMod
                         {
                             continue;
                         }
-                        UIUtility.SendWarning(mapObjectEntityData.ToString() + " opened.");
-                        interactionDoorPart.Open();
+                        dis = num;
+                        door = interactionDoorPart;
                     }
                 }
             }
-
+            if (door != null)
+            {
+                UIUtility.SendWarning(door.Owner?.ToString() + " opened.");
+                door.Open();
+            }
         }
         private void FindEtude(ActionList actions)
         {
