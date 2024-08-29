@@ -82,6 +82,7 @@ namespace NenioMod
                     {
                         if (unit.Blueprint == UnitRefs.DemonLordDeskari.Reference.Get())
                         {
+                            Game.Instance.Player.Inventory.Add(ItemRefs.MidnightArrow.Reference);
                             dispel.Run();
                             return;
                         }
