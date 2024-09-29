@@ -101,6 +101,7 @@ namespace NenioMod
                 }
             }
             InteractionDoorPart door = null;
+            IList<InteractionPart> parts = null;
             float dis = 30.Feet().Meters;
             foreach (MapObjectEntityData mapObjectEntityData in Game.Instance.State.MapObjects)
             {
@@ -111,15 +112,22 @@ namespace NenioMod
                     {
                         continue;
                     }
-                    else 
+                    InteractionDoorPart interactionDoorPart = mapObjectEntityData.Get<InteractionDoorPart>();
+                    if (interactionDoorPart != null && !interactionDoorPart.IsOpen)
                     {
-                        InteractionDoorPart interactionDoorPart = mapObjectEntityData.Get<InteractionDoorPart>();
-                        if (interactionDoorPart == null || interactionDoorPart.IsOpen)
-                        {
-                            continue;
-                        }
                         dis = num;
                         door = interactionDoorPart;
+                    }
+                    else if (mapObjectEntityData.Interactions?.Count > 0)
+                    {
+                        foreach (InteractionPart interactionPart in mapObjectEntityData.Interactions)
+                        {
+                            if (!interactionPart.Enabled)
+                            {
+                                dis = num;
+                                parts = mapObjectEntityData.Interactions;
+                            }
+                        }
                     }
                 }
             }
@@ -128,6 +136,15 @@ namespace NenioMod
                 UIUtility.SendWarning(door.Owner?.ToString() + " opened.");
                 door.Open();
             }
+            if (parts != null)
+            {
+                foreach (InteractionPart interactionPart in parts)
+                {
+                    UIUtility.SendWarning(interactionPart.Owner?.ToString() + " enabled.");
+                    interactionPart.Enabled = true;
+                }
+            }
+            
         }
         private void FindEtude(ActionList actions)
         {
