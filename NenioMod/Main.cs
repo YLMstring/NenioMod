@@ -51,7 +51,7 @@ public static class Main {
             {
                 if (Initialized)
                 {
-                    Logger.Info("Nenio Mod started already");
+                    Logger.Info("Nenio Mod started already.");
                     return;
                 }
                 Logger.Info("Nenio Mod started.");
