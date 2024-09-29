@@ -128,7 +128,18 @@ namespace NenioMod
                 UIUtility.SendWarning(door.Owner?.ToString() + " opened.");
                 door.Open();
             }
+            if (Game.Instance.CurrentlyLoadedArea.AssetGuidThreadSafe == "982abcee3e7b25f459bef22ea22b3ab5")
+            {
+                UIUtility.SendWarning("Solving ivory puzzles...");
+                ivory.Run();
+            }
         }
+
+        private ActionList ivory = ActionsBuilder.New()
+            .PlayCutscene(true, BlueprintTool.GetRef<CutsceneReference>("a6076df5e5d7fda4e8986d1ad35df773"), null, true)
+            .PlayCutscene(true, BlueprintTool.GetRef<CutsceneReference>("6cc832b9c92dff242b329f5d43628c23"), null, true)
+            .PlayCutscene(true, BlueprintTool.GetRef<CutsceneReference>("6dd7aaefc38271a4e94474f47637bd42"), null, true)
+            .Build();
         private void FindEtude(ActionList actions)
         {
             if (actions?.Actions == null) return;
